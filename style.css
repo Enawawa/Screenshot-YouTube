@@ -48,7 +48,8 @@
 	border: none;
 	border-radius: 12px;
 	padding: 10px;
-	background-color: rgb(233, 233, 233);
+	background-color: antiquewhite;
+    color: darkslategrey;
 	overflow: auto;
 	z-index: 9999;
 }

@@ -1,7 +1,13 @@
+:root {
+	--main-bg-color: rgb(104,174,255); /* 定义一个名为 --main-bg-color 的 CSS 变量 */
+	--main-bg-color-hover: rgb(72, 133, 255); /* 定义一个名为 --main-bg-color-hover 的 CSS 变量 */
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: antiquewhite;
+    color: darkslategrey;
 }
 body {
     width: 400px;
@@ -14,8 +20,7 @@ body {
     align-items: flex-start;
     padding: 16px;
     gap: 16px;
-    background-color: antiquewhite;
-    color: darkslategrey;
+    height: auto;
 }
 img {
     width: 100%;
@@ -25,6 +30,18 @@ img {
 a {
     color: #0077cc;
     text-decoration: none;
+}
+.button {
+	font-size: 16px; /* 设置字体大小为16 */
+	border: none; /* 设置无边框 */
+    border-radius: 4px; /* 设置圆角为8px */
+    background-color: var(--main-bg-color); /* 使用 CSS 变量 */ 
+    color: white; /* 设置文字颜色为白色 */
+	padding: 8px; /* 设置内边距为10px 20px */
+}
+.button:hover {
+	background-color:var(--main-bg-color-hover); /* 使用 CSS 变量 */
+	cursor: pointer;
 }
 /* code {
     padding: 5px;
@@ -43,6 +60,14 @@ h3 {
 } */
 label:hover {
     cursor: pointer;
+}
+#ScreenshotKeyCheck {
+    background-color: none;
+    border: 1px solid darkslategrey;
+}
+  
+#ScreenshotKeyCheck:checked {
+    background-color: var(--main-bg-color); 
 }
 /* #showPublic img {
     display: block;
