@@ -1,3 +1,9 @@
+:root {
+	--main-bg-color: rgb(104,174,255); /* 定义一个名为 --main-bg-color 的 CSS 变量 */
+	--main-bg-color-hover: rgb(72, 133, 255); /* 定义一个名为 --main-bg-color-hover 的 CSS 变量 */
+}
+  
+	
 .SYText {
 	width: 4em !important;
 	float: left;
@@ -11,3 +17,62 @@
 .SYText.SYTactive {
 	text-decoration: underline;
 }
+.mainButton {
+	font-size: 16px; /* 设置字体大小为16 */
+	border: none; /* 设置无边框 */
+    border-radius: 4px; /* 设置圆角为8px */
+    background-color: var(--main-bg-color); /* 使用 CSS 变量 */ 
+    color: white; /* 设置文字颜色为白色 */
+	padding: 8px; /* 设置内边距为10px 20px */
+}
+.mainButton:hover {
+	background-color:var(--main-bg-color-hover); /* 使用 CSS 变量 */
+	cursor: pointer;
+}
+.closeButton {
+	font-size: 16px; /* 设置字体大小为16 */
+	border: none; /* 设置无边框 */
+	background: none; /* 设置背景为透明 */
+	text-decoration: none; /* 设置无下划线 */
+	color: cornflowerblue; /* 设置文字颜色为白色 */
+}
+.closeButton:hover {
+	cursor: pointer; /* 设置鼠标悬停时的样式为手型 */
+}
+.previewContainer{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 300px;
+	height: auto;
+	border: none;
+	border-radius: 12px;
+	padding: 10px;
+	background-color: rgb(233, 233, 233);
+	overflow: auto;
+	z-index: 9999;
+}
+.previewImageContainer {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+.previewImage {
+	width: 100%;
+	height: auto;
+	margin-top: 0px;
+}
+
+#handle {
+	width: 40px; 
+	height: 8px; 
+	border-radius: 20px;
+	background-color: #999999; 
+	cursor: move;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	margin-bottom:10px;
+}
+
