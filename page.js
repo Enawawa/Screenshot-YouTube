@@ -5,20 +5,6 @@ var screenshotFunctionality = 0;
 var screenshotFormat = "png";
 var extension = 'png';
 
-var screenshotButton = document.createElement("div");
-screenshotButton.className = "screenshotButton ytp-button";
-screenshotButton.style.cssFloat = "left";
-screenshotButton.style.width = "48px";  
-screenshotButton.style.display = "flex";  // 使用 Flexbox 布局
-screenshotButton.style.justifyContent = "center";  // 水平居中
-screenshotButton.style.alignItems = "center";  // 垂直居中
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    if (message.svg) {
-        screenshotButton.innerHTML = message.svg;
-    }
-});
-screenshotButton.onclick = CaptureScreenshot;
-
 var previewContainer = document.createElement("div");
 previewContainer.className = "previewContainer";
 previewContainer.style.display = "none";
@@ -92,7 +78,6 @@ closeButton.onclick = function() {
 	portion = 0.2;
 	copyButton.innerHTML = "Copy";
 	copyButton.style.backgroundColor = downloadButton.style.backgroundColor;
-	previewContainer.style.position = "fixed";
 };
 
 var buttonContainer = document.createElement("div");
@@ -211,7 +196,7 @@ document.addEventListener('keydown', function(e) {
 	if (document.activeElement.contentEditable === 'true' || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA' || document.activeElement.contentEditable === 'plaintext')
 		return true;
 
-	if (screenshotKey && e.key === 'p') {
+	if (screenshotKey && e.key.toLowerCase() === 'p') {
 		CaptureScreenshot();
 		e.preventDefault();
 		return false;
@@ -296,14 +281,28 @@ function CaptureScreenshot() {
 	previewContainer.style.display = "block";
 }
 
-AddScreenshotButton();
+function AddScreenshotButton(svgData) {
+    var ytpRightControls = document.getElementsByClassName("ytp-right-controls")[0];
+    if (ytpRightControls) {
+        // 检查按钮是否已经存在
+        var existingButton = ytpRightControls.getElementsByClassName("screenshotButton")[0];
+        if (!existingButton) {
+            var screenshotButton = document.createElement("div");
+            screenshotButton.className = "screenshotButton ytp-button";
+            screenshotButton.style.cssFloat = "left";
+            screenshotButton.style.width = "48px";  
+            screenshotButton.style.display = "flex";  // 使用 Flexbox 布局
+            screenshotButton.style.justifyContent = "center";  // 水平居中
+            screenshotButton.style.alignItems = "center";  // 垂直居中
+            screenshotButton.innerHTML = svgData;
+            screenshotButton.onclick = CaptureScreenshot;
 
-function AddScreenshotButton() {
-	var ytpRightControls = document.getElementsByClassName("ytp-right-controls")[0];
-	if (ytpRightControls) {
-		ytpRightControls.prepend(screenshotButton);
-	}
+            ytpRightControls.prepend(screenshotButton);
+        }
+    }
 }
+
+window.AddScreenshotButton = AddScreenshotButton;
 
 
 

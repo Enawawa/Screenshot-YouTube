@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Screenshot YouTube",
+    "name": "IdeaCam: Multi Screenshots to One Image YouTube",
     "version": "1.0.0",
-    "description": "Take a screenshot of any YouTube video with one click. Download or copy the stitched image.",
+    "description": "Take screenshots of any YouTube video with one click. Download or copy the stitched image.",
     "icons": {
         "16": "extension_icon_16.png",
         "48": "extension_icon_48.png",
@@ -20,10 +20,8 @@
         "service_worker": "background.js"
     },
     "permissions": [
-        "webNavigation",
         "storage",
-        "scripting",
-		"tabs"
+        "scripting"
     ],
     "host_permissions": [
         "https://www.youtube.com/*"
